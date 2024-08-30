@@ -40,6 +40,32 @@ class _SignInScreenState extends State<SignInScreen> {
               ],
             ),
           ),
+          SizedBox(height: 20.0), // Space before "Welcome Back"
+          // Welcome Back text
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0), // Padding around the welcome text
+            child: Text(
+              'Welcome Back',
+              style: TextStyle(
+                color: Colors.orange, // Color to match the theme
+                fontSize: 28.0, // Font size for the welcome text
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(height: 8.0), // Space between welcome text and subtitle
+          // Subtitle text with black color
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0), // Padding around the subtitle
+            child: Text(
+              'Glad to see you back my buddy',
+              style: TextStyle(
+                color: Colors.black, // Change text color to black
+                fontSize: 16.0, // Font size for the subtitle
+              ),
+            ),
+          ),
+          SizedBox(height: 20.0), // Space between subtitle and email input
           // Email and Password fields
           Padding(
             padding: EdgeInsets.all(16.0),
