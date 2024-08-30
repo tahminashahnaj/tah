@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'user_provider.dart'; // Import the user provider
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
+  @override
+  _SignInScreenState createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +22,7 @@ class SignInScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            color: Colors.orange, // Make the whole area orange
+            color: Colors.orange, // Orange container for the "Sign In" text
             width: double.infinity, // Full width
             padding: EdgeInsets.all(16.0), // Padding around the content
             child: Column(
@@ -30,7 +36,108 @@ class SignInScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20.0), // Space between the "Sign In" text and the email field
+                SizedBox(height: 40.0), // Increased space between the "Sign In" text and the icons
+              ],
+            ),
+          ),
+          // Email and Password fields
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                // Email container with icon
+                Container(
+                  width: 300, // Set a fixed width for the container
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.orange, // Orange background for email input
+                    borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26, // Shadow color
+                        blurRadius: 8.0, // Blur radius
+                        offset: Offset(0, 4), // Shadow offset
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.email, color: Colors.white), // Email icon
+                      SizedBox(width: 8.0), // Small space (8.0) between icon and text field
+                      Expanded(
+                        child: TextField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                            border: InputBorder.none, // Remove underline
+                          ),
+                          style: TextStyle(color: Colors.white), // Change text color to white
+                          cursorColor: Colors.white, // Cursor color
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20.0), // Space between email and password
+                // Password container with icon
+                Container(
+                  width: 300, // Set a fixed width for the container
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.orange, // Orange background for password input
+                    borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26, // Shadow color
+                        blurRadius: 8.0, // Blur radius
+                        offset: Offset(0, 4), // Shadow offset
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.lock, color: Colors.white), // Password lock icon
+                      SizedBox(width: 8.0), // Space between icon and text field
+                      Expanded(
+                        child: TextField(
+                          controller: _passwordController,
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            labelStyle: TextStyle(color: Colors.white),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                            border: InputBorder.none, // Remove underline
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureText ? Icons.visibility_off : Icons.visibility,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText = !_obscureText; // Toggle visibility
+                                });
+                              },
+                            ),
+                          ),
+                          style: TextStyle(color: Colors.white), // Change text color to white
+                          cursorColor: Colors.white, // Cursor color
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -38,16 +145,6 @@ class SignInScreen extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             child: Column(
               children: [
-                TextField(
-                  controller: _emailController,
-                  decoration: InputDecoration(labelText: 'Email'),
-                ),
-                TextField(
-                  controller: _passwordController,
-                  decoration: InputDecoration(labelText: 'Password'),
-                  obscureText: true,
-                ),
-                SizedBox(height: 20.0),
                 ElevatedButton(
                   onPressed: () {
                     Provider.of<UserProvider>(context, listen: false).setUser(
