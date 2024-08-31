@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flutter Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js"></script>
+    <script type="module">
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDwytcSXUM0sHgvq31e-J5NqhlHKgKrNj0",
+            authDomain: "myfirstapp-72607.firebaseapp.com",
+            projectId: "myfirstapp-72607",
+            storageBucket: "myfirstapp-72607.appspot.com",
+            messagingSenderId: "94692465538",
+            appId: "1:94692465538:web:c51db6558056521f0acd9b",
+            measurementId: "G-SLB2SCGBXR"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const analytics = firebase.getAnalytics(app);
+    </script>
+</head>
+<body>
+<script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>

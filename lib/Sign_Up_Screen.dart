@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerce_app/user_provider.dart';
+import 'user_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
@@ -13,7 +14,7 @@ class SignUpScreen extends StatelessWidget {
         title: Text('Sign Up'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0.w),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
@@ -25,16 +26,33 @@ class SignUpScreen extends StatelessWidget {
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: () {
-                Provider.of<UserProvider>(context, listen: false).setUser(
-                  UserModel(
+              onPressed: () async {
+                try {
+                  UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                     email: _emailController.text,
                     password: _passwordController.text,
-                  ),
-                );
-                // Navigate to another screen or show a success message
+                  );
+
+                  // Store user data in UserProvider
+                  Provider.of<UserProvider>(context, listen: false).setUser(
+                    UserModel(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    ),
+                  );
+
+                  // Navigate to Sign In screen
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => SignInScreen(),
+                    ),
+                  );
+                } catch (e) {
+                  // Handle error
+                  print(e);
+                }
               },
               child: Text('Sign Up'),
             ),

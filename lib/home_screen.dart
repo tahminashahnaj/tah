@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'sign_in_screen.dart'; // Import the SignInScreen
+import 'sign_in_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange, // Set the background color to orange
+      backgroundColor: Colors.orange,
       body: Center(
         child: Text(
           'E-COMMERCE',

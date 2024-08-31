@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:async'; // For the Timer
-
-import 'home_screen.dart'; // Import the HomeScreen
+import 'dart:async';
+import 'home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -26,9 +25,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Splash screen background color
+      backgroundColor: Colors.white,
       body: Center(
-        child: CircularProgressIndicator(), // Loading indicator for visual feedback
+        child: CircularProgressIndicator(),
       ),
     );
   }

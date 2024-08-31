@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 import 'user_provider.dart';
-import 'splash_screen.dart'; // Import the SplashScreen
+import 'splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
             title: 'E-commerce App',
-            debugShowCheckedModeBanner: false, // Remove the debug banner
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
