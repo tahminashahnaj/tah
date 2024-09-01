@@ -3,8 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'user_provider.dart';
 import 'splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart'; // Import Firebase
+import 'firebase_options.dart'; // Import your firebase options
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform); // Initialize Firebase
   runApp(MyApp());
 }
 

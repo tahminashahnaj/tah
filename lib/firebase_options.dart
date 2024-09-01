@@ -12,13 +12,13 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'Your-Web-API-Key',
-    authDomain: 'Your-Web-Auth-Domain',
-    projectId: 'Your-Project-ID',
-    storageBucket: 'Your-Storage-Bucket',
-    messagingSenderId: 'Your-Messaging-Sender-ID',
-    appId: 'Your-App-ID',
-    measurementId: 'Your-Measurement-ID',
+      apiKey: "AIzaSyDwytcSXUM0sHgvq31e-J5NqhlHKgKrNj0",
+      authDomain: "myfirstapp-72607.firebaseapp.com",
+      projectId: "myfirstapp-72607",
+      storageBucket: "myfirstapp-72607.appspot.com",
+      messagingSenderId: "94692465538",
+      appId: "1:94692465538:web:c51db6558056521f0acd9b",
+      measurementId: "G-SLB2SCGBXR"
   );
 
 // Add other platform configurations (e.g., Android, iOS) if needed
